@@ -29,7 +29,6 @@ class EmployeesController < ApplicationController
     redirect_to "/employees/#{@employee["id"]}"
   end
 
-
   def show
     # @employee = Employee.find_by(id: params[:id])
     @employee = Unirest.get(
@@ -68,4 +67,5 @@ class EmployeesController < ApplicationController
     ).body
     redirect_to "/employees"
   end
+ end
 end
