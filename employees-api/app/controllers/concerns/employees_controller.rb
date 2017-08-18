@@ -3,11 +3,9 @@ class EmployeesController < ApplicationController
   HEADERS = { 'Authorization' => "Token token=#{ENV['API_KEY']}", 'X-User-Email' => ENV['API_EMAIL'] }
 
   def index
-    # @employees = Employee.all
-    @employees = Unirest.get(
-      "#{ENV['API_BASE_URL']}/employees",
-      headers: HEADERS
-    ).body
+    @employees = Employee.all
+    @employees = Unirest.get("https://data.cityofchicago.org/resource/xzkq-xp2w.json").body
+      
     render 'index.html.erb'
   end
 
